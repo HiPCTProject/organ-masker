@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# Ignore model checkpoints and configuration files
+src/organ_masker/checkpoints/
+src/organ_masker/configs/
+
+
 # Distribution / packaging
 .Python
 build/

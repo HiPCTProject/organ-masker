@@ -44,10 +44,15 @@ dependencies = [
     "numpy>=1.20",
     "opencv-python",
     "scikit-image",
+    "scipy",
+    "matplotlib",
+    "pyqt5",
+    "pyqtgraph",
     "sam2",
     "decord",
     "dask",
     "alive_progress",
+    "screeninfo",
     "hoa_tools",
 ]
 
