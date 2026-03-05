@@ -16,11 +16,11 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from alive_progress import alive_bar
 
-from roi_ui import (
+from .roi_ui import (
     select_rects_overlay, select_points_overlay, select_circles_overlay,
     draw_mask_overlay, fit_to_screen, load_reused_prompts
 )
-from volume_io import (
+from .volume_io import (
     get_dims_streaming,
     sample_percentiles_streaming,
     get_plane_frame_streaming,
@@ -28,9 +28,9 @@ from volume_io import (
     build_memmap_normalized_minimal_dims,
     choose_windowing_streaming,
 )
-from postproc import fill_2d_holes
+from .postproc import fill_2d_holes
 from scipy.signal import medfilt2d
-from sam2_runner import (
+from .sam2_runner import (
     build_predictor,
     write_xy_videos_streaming_norm,
     write_plane_videos_streaming,
