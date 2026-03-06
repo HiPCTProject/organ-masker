@@ -104,6 +104,7 @@ ipython_config.py
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
 #   commonly ignored for libraries.
 #uv.lock
+.python-version
 
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
@@ -197,3 +198,8 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# SAM 2.1 models
+#  SAM 2.1 is a state-of-the-art image segmentation model. Ignore directories containing
+#  model checkpoints and configuration files.
+*.pt
