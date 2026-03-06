@@ -66,7 +66,7 @@ def _discover_keys_for_model(model_name: str):
 
 
 def _extract_package_configs_to_local():
-    target = Path(__file__).resolve().parents[1] / "configs" / "sam2.1"
+    target = Path(".") / "configs" / "sam2.1"
     try:
         pkg = importlib.import_module("sam2")
         base = ir.files(pkg) / "configs" / "sam2.1"
