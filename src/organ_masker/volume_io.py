@@ -6,15 +6,13 @@ from tqdm import tqdm
 from skimage.measure import block_reduce
 from scipy.ndimage import median_filter
 
-
 # ------------------ Basic dims helpers ------------------
 
 def get_dims_streaming(im_dir, hoatools, datasetname, priv_meta, hoa_downsample_level=2):
     if hoatools:
         import hoa_tools.dataset as hoa_dataset
         if priv_meta:
-            from pathlib import Path as _P
-            hoa_dataset.change_metadata_directory(_P(priv_meta))
+            hoa_dataset.change_metadata_directory(Path(priv_meta))
         ds = hoa_dataset.get_dataset(datasetname)
         da = ds.data_array(downsample_level=hoa_downsample_level)
         Z = da.sizes["z"]
@@ -47,8 +45,7 @@ def infer_downsampled_hw_from_first_slice(
     if hoatools:
         import hoa_tools.dataset as hoa_dataset
         if priv_meta:
-            from pathlib import Path as _P
-            hoa_dataset.change_metadata_directory(_P(priv_meta))
+            hoa_dataset.change_metadata_directory(Path(priv_meta))
         d = hoa_dataset.get_dataset(datasetname)
         da = d.data_array(downsample_level=hoa_downsample_level)
         first = da.isel(z=0).values
@@ -249,8 +246,7 @@ def build_memmap_normalized_minimal_dims(
     if hoatools:
         import hoa_tools.dataset as hoa_dataset
         if priv_meta:
-            from pathlib import Path as _P
-            hoa_dataset.change_metadata_directory(_P(priv_meta))
+            hoa_dataset.change_metadata_directory(Path(priv_meta))
         d = hoa_dataset.get_dataset(datasetname)
         da = d.data_array(downsample_level=hoa_downsample_level)
         Z = int(da.sizes["z"])
@@ -448,8 +444,7 @@ def choose_windowing_streaming(
     if hoatools:
         import hoa_tools.dataset as hoa_dataset
         if priv_meta:
-            from pathlib import Path as _P
-            hoa_dataset.change_metadata_directory(_P(priv_meta))
+            hoa_dataset.change_metadata_directory(Path(priv_meta))
         d = hoa_dataset.get_dataset(datasetname)
         da = d.data_array(downsample_level=hoa_downsample_level)
         reader = lambda i: da.isel(z=i).values
