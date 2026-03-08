@@ -36,7 +36,7 @@ def _find_checkpoint(model_name: str) -> Path:
 
 
 def _discover_keys_for_model(model_name: str):
-    suf = {"tiny": "t", "small": "s", "base": "b", "large": "l"}[model_name]
+    suf = {"tiny": "t", "small": "s", "base_plus": "b+", "large": "l"}[model_name]
     default = [
         f"sam2.1_hiera_{model_name}",
         f"sam2.1_hiera_{suf}",

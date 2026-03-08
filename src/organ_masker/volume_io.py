@@ -5,30 +5,14 @@ import cv2
 from tqdm import tqdm
 from skimage.measure import block_reduce
 from scipy.ndimage import median_filter
+from dask.array import from_zarr
 
 # ------------------ Basic dims helpers ------------------
 
-def get_dims_streaming(im_dir, hoatools, datasetname, priv_meta, hoa_downsample_level=2):
-    if hoatools:
-        import hoa_tools.dataset as hoa_dataset
-        if priv_meta:
-            hoa_dataset.change_metadata_directory(Path(priv_meta))
-        ds = hoa_dataset.get_dataset(datasetname)
-        da = ds.data_array(downsample_level=hoa_downsample_level)
-        Z = da.sizes["z"]
-        H, W = da.isel(z=0).values.shape
-        return int(Z), int(H), int(W)
-    else:
-        p = Path(im_dir)
-        files = sorted([f for f in p.iterdir() if f.suffix.lower() in [".tif", ".tiff", ".jp2"]])
-        if not files:
-            raise FileNotFoundError(f"No images found in {p}")
-        first = cv2.imread(str(files[0]), -1)
-        if first is None:
-            raise RuntimeError(f"Could not read {files[0]}")
-        H, W = first.shape[:2]
-        return len(files), int(H), int(W)
-
+def get_dimensions(im_dir, downsample_level=2):
+    array_path = Path(im_dir) / str(downsample_level)
+    array = from_zarr(array_path)
+    return array.shape[::-1]
 
 def infer_downsampled_hw_from_first_slice(
     im_dir, hoatools, datasetname, priv_meta, downsample, hoa_downsample_level=2

@@ -13,7 +13,7 @@ Also contains ROI reuse helpers:
 
 import cv2
 import numpy as np
-from pathlib import Path
+from cloudpathlib import AnyPath as Path
 from screeninfo import get_monitors
 import json
 from scipy.ndimage import binary_fill_holes  # used only on confirm to solidify FG loops
