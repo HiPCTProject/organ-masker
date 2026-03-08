@@ -1,5 +1,5 @@
 # volume_io.py — consistent downsampling/normalization for streaming + memmap
-from pathlib import Path
+from cloudpathlib import AnyPath as Path
 import numpy as np
 import cv2
 from tqdm import tqdm

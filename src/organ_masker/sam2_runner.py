@@ -2,7 +2,7 @@
 import os
 import cv2
 import numpy as np
-from pathlib import Path
+from cloudpathlib import AnyPath as Path
 from tqdm import tqdm
 from skimage.measure import block_reduce
 from scipy.ndimage import median_filter

@@ -12,7 +12,7 @@ import cv2
 import json
 import argparse
 import numpy as np
-from pathlib import Path
+from cloudpathlib import AnyPath as Path
 from tempfile import NamedTemporaryFile
 from alive_progress import alive_bar
 
@@ -21,7 +21,7 @@ from .roi_ui import (
     draw_mask_overlay, fit_to_screen, load_reused_prompts
 )
 from .volume_io import (
-    get_dims_streaming,
+    get_dimensions,
     sample_percentiles_streaming,
     get_plane_frame_streaming,
     infer_downsampled_hw_from_first_slice,
@@ -281,7 +281,7 @@ def main():
     args._roi_dir = roi_dir
 
     print("Processing image stack...")
-    Z, H, W = get_dims_streaming(
+    Z, H, W = get_dimensions(
         args.im_dir, args.hoatools, args.datasetname,
         args.privatemetadatapath, args.hoa_downsample_level
     )
