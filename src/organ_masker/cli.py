@@ -2,7 +2,7 @@
 # main_sam2_organmasker.py
 #
 # Streaming SAM2 organ/background masker with:
-# - ROI-centred forward & backward videos per plane (XY, YZ, XZ)
+# - ROI-centered forward & backward videos per plane (XY, YZ, XZ)
 # - One ROI slice per plane (XY + optional YZ/XZ)
 # - Orthogonal accumulation with consistent dimensions
 # - Memory-mapped vote fusion and optional hole filling
